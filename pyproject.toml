@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mgn-avqa"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["torch>=2.2", "numpy>=1.24", "PyYAML>=6", "jieba>=0.42", "nltk>=3.8"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+features = ["transformers>=4.40,<5", "pypinyin>=0.50"]
+
+[project.scripts]
+mgn = "mgn.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
