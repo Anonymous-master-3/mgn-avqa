@@ -1,0 +1,41 @@
+model:
+  visual_dim: 2048
+  question_dim: 768
+  audio_dim: 512
+  hidden_dim: 512
+  max_visual_len: 20
+  max_question_len: 25
+  max_audio_len: 100
+  max_answer_len: 15
+  graph_layers: 2
+  dropout: 0.3
+  tpa_rank: 64
+  tpa_feature_rank: 64
+  variant: ppa
+  graph_mode: full
+  modalities: va
+  contrastive: true
+  encoder_heads: 8
+  encoder_conv_layers: 2
+  encoder_kernel_size: 7
+  bilinear_rank: 64
+  tpa_activation: relu
+  contrastive_temperature: 1.0
+  contrastive_normalize: false
+  contrastive_chunk_size: 16
+  contrastive_checkpoint: true
+training:
+  lr: 0.0005
+  batch_size: 64
+  epochs: 30
+  seed: 42
+  warmup_steps: 100
+  early_stopping_patience: 5
+  grad_clip: 5.0
+  contrastive_weight: 0.0001
+  num_workers: 0
+  device: cpu
+data:
+  train_manifest: data/train.jsonl
+  val_manifest: data/val.jsonl
+  vocab: data/vocab.json
